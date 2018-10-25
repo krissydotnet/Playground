@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Playing with Javascript Animation</title>
+    <style>
+    #outer-box {
+        position: relative;
+        width: 300px;
+        height: 300px;
+        background-color:green;
+    }
+    #inner-box {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: red;
+    }
+    </style>
+</head>
+<body>
+    <div id="outer-box" onclick="startAnimation()">
+        <div id="inner-box"></div>
+    </div>
+    <button type="button" onclick="startAnimation()">Start</button> <button type="button" onclick="stopAnimation()">Stop</button>
+    <script>
+        var xpos = 0;
+        var ypos = 0;
+        var t;
+
+    function startAnimation() {
+        t = setInterval(move_right, 10);
+    }
+
+    function stopAnimation() {
+        clearInterval(t);
+    }
+
+    function move_right() {
+        xpos++;
+        if (xpos < 250) {
+            var el = document.getElementById("inner-box");
+            el.style.left = xpos + 'px';
+            
+        } else {
+            clearInterval(t);
+            t = setInterval(move_down, 10);
+        }
+
+    }
+    function move_down() {
+        ypos++;
+        if (ypos < 250) {
+            var el = document.getElementById("inner-box");
+            el.style.top = ypos + 'px';
+        } else {
+            clearInterval(t);
+            t = setInterval(move_left, 10);
+        }
+
+    }
+    function move_left() {
+        xpos--;
+        if (xpos > 0) {
+            var el = document.getElementById("inner-box");
+            el.style.left = xpos + 'px';
+            
+        } else {
+            clearInterval(t);
+            t = setInterval(move_up, 10);
+        }
+
+    }
+    function move_up() {
+        ypos--;
+        if (ypos > 0) {
+            var el = document.getElementById("inner-box");
+            el.style.top = ypos + 'px';
+        } else {
+            clearInterval(t);
+            t = setInterval(move_right, 10);
+        }
+
+    }
+    </script>
+</body>
+</html>

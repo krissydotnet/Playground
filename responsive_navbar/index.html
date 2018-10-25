@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive NavBar With Toggle</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+        }
+    .NavBar {
+        background-color: #46ACC2;
+        display: flex;
+
+        padding: 16px;
+        font-family: sans-serif;
+        color: white;
+    }
+    .NavBar_Link-toggle {
+        display: none;
+    }
+    .NavBar_Items {
+        display: flex;
+
+    }
+    .NavBar_Link {
+        padding-right: 8px;
+    }
+    .NavBar_Items-right {
+        margin-left: auto;
+    }
+    .main h1 {
+        text-align: center;
+    }
+    footer {
+        background-color:  #46ACC2;
+        color: white;
+        height: 50px;
+        position: fixed;
+        bottom: 0;
+        width: 100vw;
+        text-align: center;
+    }
+    footer a {
+        text-decoration: none;
+        color: white;
+        line-height: 50px;
+    }
+    @media only screen and (max-width: 768px) {
+        .NavBar, .NavBar_Items {
+            flex-direction: column;
+        }
+        .NavBar_Items {
+            display: none;
+        }
+        .NavBar_Link-toggle {
+            align-self: flex-end;
+            display: initial;
+            position: absolute;
+            cursor: pointer;
+        }
+        .NavBar_Items-right {
+            margin-left: 0;
+        }
+        .NavBar_ToggleShow {
+            display: flex;
+        }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="NavBar">
+
+            <div class="NavBar_Link NavBar_Link-brand">
+                Website title
+            </div>
+            <div class="NavBar_Link NavBar_Link-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="NavBar_Items">
+            <div class="NavBar_Link">
+                Link
+            </div>
+            <div class="NavBar_Link">
+                Link
+            </div>
+            <div class="NavBar_Link">
+                Link
+            </div>
+
+        </nav>
+        <nav class="NavBar_Items NavBar_Items-right">
+                <div class="NavBar_Link">
+                    Link
+                </div>
+                <div class="NavBar_Link">
+                    Link
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <main><h1>Responsive navbar with a toggle menu</h1></main>
+    <footer><a href="https://medium.freecodecamp.org/how-to-build-a-responsive-navbar-with-a-toggle-menu-using-flexbox-3438e1d08783" target="_blank">Article: How to build a responsive navbar with a toggle menu using Flexbox</a></footer>
+    <script>
+    function classToggle() {
+        const nav = document.querySelectorAll('.NavBar_Items');
+        nav.forEach(nav => nav.classList.toggle('NavBar_ToggleShow'));
+    }
+    document.querySelector('.NavBar_Link-toggle').addEventListener('click', classToggle);
+    </script>
+</body>
+</html>
